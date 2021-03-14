@@ -1,64 +1,30 @@
-class User {
-    constructor(email, password) {
-        console.log("Hello", email)
-        this.email = email
-    }
-    set_user(name, address, phone) {
-        this.name = name
-        this.address = address
-        this.phone = phone
-    }
-}
+const User = require("./user")
+const Category = require("./category")
+const SubCategory = require("./subCategory")
+const Product = require("./product")
+const chalk = require('chalk')
+const Database = require("./database")
 
-didem = new User("did@gmail.com", 12789)
+console.log(chalk.blue('Hello') + ' World' + chalk.red('!'));
+
+const didem = new User("did@gmail.com", 12789)
 didem.set_user("Didem", "blabla", "09876")
 
-class Category {
-    constructor(categoryName) {
-        this.name = categoryName
-        this.subCategories = []
-    }
-    addcategory(subCategory) {
-        this.subCategories.push(subCategory)
-    }
-}
 
-clothes = new Category("Clothes")
-shoes = new Category("Shoes")
-electronics = new Category("Electronics")
+const clothes = new Category("Clothes")
+const shoes = new Category("Shoes")
+const electronics = new Category("Electronics")
 
-class SubCategory {
-    constructor(subCategoryName) {
-        this.name = subCategoryName
-        this.products = []
-    }
-    addproduct(product) {
-        this.products.push(product)
+const skirt1 = new Product("Kırmızı Etek", "Gucci", "100$", "M")
+const sport1 = new Product("Siyah Ayakkabı", "Nike", "99$", "38")
+const tablet1 = new Product("Ipad Rose", "Apple", "11inch")
+const laptop1 = new Product("Acer laptop", "Acer", "16inch")
 
-    }
-}
-
-skirt = new SubCategory("skirt")
-dress = new SubCategory("dress")
-sport = new SubCategory("sport")
-tablet = new SubCategory("tablet")
-laptop = new SubCategory("laptop")
-
-class Product {
-    constructor(name, brand, price, size) {
-        this.name = name
-        this.brand = brand
-        this.price = price
-        this.size = size
-        this.discount = 0
-    }
-
-}
-
-skirt1 = new Product("Kırmızı Etek", "Gucci", "100$", "M")
-sport1 = new Product("Siyah Ayakkabı", "Nike", "99$", "38")
-tablet1 = new Product("Ipad Rose", "Apple", "11inch")
-laptop1 = new Product("Acer laptop", "Acer", "16inch")
+const skirt = new SubCategory("skirt")
+const dress = new SubCategory("dress")
+const sport = new SubCategory("sport")
+const tablet = new SubCategory("tablet")
+const laptop = new SubCategory("laptop")
 
 skirt.addproduct(skirt1)
 clothes.addcategory(skirt)
@@ -68,3 +34,9 @@ tablet.addproduct(tablet1)
 laptop.addproduct(laptop1)
 electronics.addcategory(laptop)
 electronics.addcategory(tablet)
+
+Database.save("clothes.json", clothes)
+Database.save("electronics.json", electronics)
+Database.save("shoes.json", shoes)
+const loadedFile = Database.load("clothes.json")
+console.log(loadedFile.name)

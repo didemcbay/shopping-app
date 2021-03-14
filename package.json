@@ -1,0 +1,22 @@
+{
+  "name": "shopping-app",
+  "version": "1.0.0",
+  "description": "Full-stack js application demo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/didemcbay/shopping-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/didemcbay/shopping-app/issues"
+  },
+  "homepage": "https://github.com/didemcbay/shopping-app#readme",
+  "dependencies": {
+    "chalk": "^4.1.0"
+  }
+}
