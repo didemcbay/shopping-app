@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/didemcbay/shopping-app#readme",
   "dependencies": {
-    "chalk": "^4.1.0"
+    "chalk": "^4.1.0",
+    "flatted": "^2.0.1"
   }
 }
