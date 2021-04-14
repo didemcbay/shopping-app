@@ -1,24 +1,14 @@
-module.exports = class Category {
-    constructor(categoryName, subCategories = [], id) {
-        this.name = categoryName
-        this.subCategories = subCategories
-        this.id = id
+const mongoose = require('mongoose')
 
+const CategorySchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true,
+        minLength: 3
     }
+})
 
-    addSubCategory(subCategory) {
-        this.subCategories.push(subCategory)
-    }
+CategorySchema.plugin(require('mongoose-autopopulate'))
+const CategoryModel = mongoose.model('Category', CategorySchema)
 
-    report() {
-        this.subCategories.forEach(printSubCategory)
-
-    }
-
-    static create({ name, subCategories, id }) {
-        return new Category(name, subCategories, id)
-    }
-
-}
-
-const printSubCategory = (subCategory) => console.log(subCategory.name)
+module.exports = CategoryModel

@@ -2,9 +2,8 @@ const BaseService = require("./base-service")
 const CategoryModel = require("../models/category")
 
 class CategoryService extends BaseService {
-    constructor() {
-        super(CategoryModel, `${__dirname}/../category-database.json`);
-    }
-
+    model = CategoryModel
 }
+
+
 module.exports = new CategoryService()
